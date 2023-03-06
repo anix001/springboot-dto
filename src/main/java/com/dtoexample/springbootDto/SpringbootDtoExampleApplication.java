@@ -4,9 +4,11 @@ import com.dtoexample.springbootDto.model.Location;
 import com.dtoexample.springbootDto.model.User;
 import com.dtoexample.springbootDto.repository.LocationRepository;
 import com.dtoexample.springbootDto.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringbootDtoExampleApplication implements CommandLineRunner {
@@ -14,6 +16,11 @@ public class SpringbootDtoExampleApplication implements CommandLineRunner {
 	public SpringbootDtoExampleApplication(UserRepository userRepository, LocationRepository locationRepository) {
 		this.userRepository = userRepository;
 		this.locationRepository = locationRepository;
+	}
+
+	@Bean
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
 	}
 
 	public static void main(String[] args) {
